@@ -4,95 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .highlight {
-            background-color: yellow;
-            width: 200px;
-        }
-
-        .underline {
-            text-decoration: underline;
-            color: green;
-        }
-
-        .bold {
-            font-weight: bold;
-            color: green;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .visible {
-            display: block;
-        }
-
-        .btn1 {
-            pointer-events: none;
-        }
-
-        .background1 {
-            background-color: red;
-            width: 500px;
-            padding: 10px;
-        }
-
-        .background2 {
-            background-color: blue;
-        }
-
-        .background3 {
-            color: green;
-        }
-
-        .body {
-            background-color: wheat;
-        }
-    </style>
+    <title>Phone Book</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body class="body">
-    <p class="background3" id="text">this is simple para</p>
-    <input type="text" id="classInput" placeholder="enter class name">
-    <button onclick="addClass()">add class</button><br><br>
-    <section class="paras background1">
-        <p id="1" class="visible">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus, placeat.</p>
-        <button id="option1" onclick="toggleVisibility(1)">toggle para</button><br><br>
-        <p id="2" class="visible">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem, tempore?</p>
-        <button id="option2" onclick="toggleVisibility(2)">toggle para</button><br><br>
-        <p id="3" class="visible">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, ut.</p>
-        <button id="option3" onclick="toggleVisibility(3)">toggle para</button><br><br>
-    </section><br><br>
-    <section>
-        <button class="btn background2" onclick="changeTxt()">click me</button>
-    </section>
-    <script>
-        function addClass() {
-            const option = document.getElementById('classInput').value;
-            const elem = document.getElementById('text');
-            elem.className = option;
-        }
-
-        function toggleVisibility(id) {
-            const elem = document.getElementById(id);
-            if (elem.className == 'visible') {
-                elem.className = 'hidden';
-            }
-            else {
-                elem.className = 'visible';
-            }
-        }
-
-        function changeTxt() {
-            const elem = document.querySelector(".btn");
-            elem.innerHTML = "clicked!";
-            elem.classList.add("btn1");
-
-        }
-    </script>
-
+    <header class="header">
+        <h1>Phone Book</h1>
+    </header>
+    <div class="container">
+        <div class="details">
+            <input type="text" placeholder="Search" id="search-input" onkeyup="searchContact(event)">
+            <div class="options">
+                <img src="img/add.png" onclick="popAdd()" alt="">
+                <img src="img/delete.png" onclick="dltAll()" alt="">
+            </div>
+        </div>
+        <section class="contacts">
+            <div class="contact">
+                <ul class="list">
+                </ul>
+            </div>
+        </section>
+    </div>
+    <div class="modal" id="myModal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModalBtn" onclick="closeModal(event)">&times;</button>
+            <div class="modal-container">
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>Done By: Ali Hanafi , Bashar Safieh
+        </p>
+    </footer>
+    <script src="index.js"></script>
 </body>
 
 </html>
